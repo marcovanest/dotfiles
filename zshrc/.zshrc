@@ -48,6 +48,7 @@ ZSH_THEME="af-magic"
 plugins=(git vagrant virtualenv)
 
 source $ZSH/oh-my-zsh.sh
+source /opt/boxen/env.sh
 
 # User configuration
 
