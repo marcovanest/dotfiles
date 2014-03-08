@@ -10,7 +10,12 @@
 " Filetype off is required by vundle
 filetype off
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
+" let Vundle manage Vundle, required
+Bundle 'gmarik/vundle'
 
 "Filetype plugin indent on is required by vundle
 filetype plugin indent on
