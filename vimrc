@@ -1,54 +1,47 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
+set t_Co=256
+filetype off                  " required
 
-"  ================ General Config ====================
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'shawncplus/phpcomplete.vim'
 
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
-set hidden
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-"turn on syntax highlighting
-syntax on 
+syntax on
+colorscheme kolor
 
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
+" Editor
+set bs=indent,eol,start " allow backspacing over everything
+set nu
+set ruler
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set expandtab       " tabs are spaces
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundle.vim
-" Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundle/vundles.vim
-endif
+set incsearch
+set ignorecase
+set smartcase
+set nosmarttab
+set hlsearch
 
-" ================ Indentation ======================
+set showmode
 
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
+" disable sound on errors
+set noerrorbells visualbell t_vb=
+set tm=500
 
-filetype plugin on
-filetype indent on
+set encoding=utf-8
+set wrap
+set textwidth=80
 
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
-
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
+set dir =~/.vim/tmp " swap files in de tmp zetten
+set backupdir =~/.vim/bak " backup files in de bak zetten
